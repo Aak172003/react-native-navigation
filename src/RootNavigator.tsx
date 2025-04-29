@@ -4,15 +4,28 @@ import HomeScreen from "./screens/HomeScreen";
 import StackNavigaionDemo from "./components/stack/StackNavigaionDemo";
 
 export type RootStackParamList = {
-  Home: undefined;
+  Home: {
+    homeId: string;
+  };
   StackNavigaionDemo: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
 const RootNavigator: FC = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={HomeScreen} />
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        initialParams={{ homeId: "Welcome" }}
+        options={({ route }) => ({
+          title: `Home ${route.params.homeId}`,
+        })}
+      />
       <Stack.Screen name="StackNavigaionDemo" component={StackNavigaionDemo} />
     </Stack.Navigator>
   );

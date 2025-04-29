@@ -7,6 +7,8 @@ import React from "react";
 
 export type StackParamList = {
   StackScreen1: undefined;
+
+  // This is how i pass the data to the next screen
   StackScreen2: {
     itemId: number;
   };
@@ -25,7 +27,7 @@ const StackNavigaionDemo: FC = () => {
       />
       <Stack.Screen
         options={({ route }) => ({
-          title: `Stack Screen Two ${route.params.itemId}`,
+          title: `Stack Screen Two ${route.params?.itemId || ""}`,
         })}
         name="StackScreen2"
         component={StackScreen2}

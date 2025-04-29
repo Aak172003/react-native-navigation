@@ -13,8 +13,11 @@ type StackScreen2RouteProps = RouteProp<StackParamList, "StackScreen2">;
 
 const StackScreen2: FC = () => {
   const navigation = useNavigation<StackScreen2NavigationProp>();
-
   const route = useRoute<StackScreen2RouteProps>();
+
+  // Safely access itemId with optional chaining
+  const itemId = route.params?.itemId;
+
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>StackScreen2</Text>
@@ -24,7 +27,7 @@ const StackScreen2: FC = () => {
       />
 
       <Text style={{ fontSize: 20, fontWeight: "bold" }}>
-        {route.params.itemId}
+        {itemId || "No item ID provided"}
       </Text>
     </View>
   );
