@@ -14,6 +14,7 @@ const Stack = createStackNavigator<RootStackParamList>();
 const RootNavigator: FC = () => {
   return (
     <Stack.Navigator
+      id={undefined}
       screenOptions={{
         headerShown: false,
       }}

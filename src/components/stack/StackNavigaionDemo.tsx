@@ -17,7 +17,7 @@ const Stack = createStackNavigator<StackParamList>();
 
 const StackNavigaionDemo: FC = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator id={undefined}>
       <Stack.Screen
         options={{
           title: "Stack Screen One",
