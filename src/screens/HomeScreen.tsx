@@ -16,14 +16,26 @@ const HomeScreen: FC = () => {
     <View style={styles.container}>
       <Text style={styles.text}>HomeScreen</Text>
 
-      <Button
-        title="Stack Navigation Demo"
-        onPress={() => navigation.navigate("StackNavigaionDemo")}
-      />
+      <View style={{ marginTop: 20 }}>
+        <Button
+          title="Stack Navigation Demo"
+          onPress={() => navigation.navigate("StackNavigaionDemo")}
+        />
 
-      <Text style={{ fontSize: 20, fontWeight: "bold" }}>
-        Home Id : {route.params.homeId}
-      </Text>
+        <Text style={{ fontSize: 20, fontWeight: "bold", marginTop: 20 }}>
+          Home: {route.params.homeId}
+        </Text>
+      </View>
+
+      <View style={{ marginTop: 20 }}>
+        <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+          Tab Navigation Demo
+        </Text>
+        <Button
+          title="Tab Navigation Demo"
+          onPress={() => navigation.navigate("TabDemo")}
+        />
+      </View>
     </View>
   );
 };

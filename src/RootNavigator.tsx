@@ -2,12 +2,14 @@ import { createStackNavigator } from "@react-navigation/stack";
 import React, { FC } from "react";
 import HomeScreen from "./screens/HomeScreen";
 import StackNavigaionDemo from "./components/stack/StackNavigaionDemo";
+import TabNavigationDemo from "./components/bottomTab/TabNavigationDemo";
 
 export type RootStackParamList = {
   Home: {
     homeId: string;
   };
   StackNavigaionDemo: undefined;
+  TabDemo: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -28,6 +30,7 @@ const RootNavigator: FC = () => {
         })}
       />
       <Stack.Screen name="StackNavigaionDemo" component={StackNavigaionDemo} />
+      <Stack.Screen name="TabDemo" component={TabNavigationDemo} />
     </Stack.Navigator>
   );
 };
