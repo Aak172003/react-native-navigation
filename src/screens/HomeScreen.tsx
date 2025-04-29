@@ -16,17 +16,17 @@ const HomeScreen: FC = () => {
     <View style={styles.container}>
       <Text style={styles.text}>HomeScreen</Text>
 
-      <View style={{ marginTop: 20 }}>
-        <Button
-          title="Stack Navigation Demo"
-          onPress={() => navigation.navigate("StackNavigaionDemo")}
-        />
+      {/* Stack Navigation */}
+      <Button
+        title="Stack Navigation Demo"
+        onPress={() => navigation.navigate("StackNavigaionDemo")}
+      />
 
-        <Text style={{ fontSize: 20, fontWeight: "bold", marginTop: 20 }}>
-          Home: {route.params.homeId}
-        </Text>
-      </View>
+      <Text style={{ fontSize: 20, fontWeight: "bold", marginTop: 20 }}>
+        Home: {route.params.homeId}
+      </Text>
 
+      {/* Bottom Tab Navigation */}
       <View style={{ marginTop: 20 }}>
         <Text style={{ fontSize: 20, fontWeight: "bold" }}>
           Tab Navigation Demo
@@ -34,6 +34,21 @@ const HomeScreen: FC = () => {
         <Button
           title="Tab Navigation Demo"
           onPress={() => navigation.navigate("TabDemo")}
+        />
+      </View>
+
+      {/* Drawer Navigation */}
+      <View style={{ marginTop: 20 }}>
+        <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+          Drawer Navigation Demo
+        </Text>
+        <Button
+          title="Drawer Navigation Demo"
+          onPress={() =>
+            navigation.navigate("DrawerDemo", {
+              drawerId: "Drawer ID from Home Screen",
+            })
+          }
         />
       </View>
     </View>

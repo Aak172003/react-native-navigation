@@ -3,6 +3,7 @@ import React, { FC } from "react";
 import HomeScreen from "./screens/HomeScreen";
 import StackNavigaionDemo from "./components/stack/StackNavigaionDemo";
 import TabNavigationDemo from "./components/bottomTab/TabNavigationDemo";
+import DrawerNavigationDemo from "./components/drawer/DrawerNavigationDemo";
 
 export type RootStackParamList = {
   Home: {
@@ -10,6 +11,9 @@ export type RootStackParamList = {
   };
   StackNavigaionDemo: undefined;
   TabDemo: undefined;
+  DrawerDemo: {
+    drawerId: string;
+  };
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -31,6 +35,7 @@ const RootNavigator: FC = () => {
       />
       <Stack.Screen name="StackNavigaionDemo" component={StackNavigaionDemo} />
       <Stack.Screen name="TabDemo" component={TabNavigationDemo} />
+      <Stack.Screen name="DrawerDemo" component={DrawerNavigationDemo} />
     </Stack.Navigator>
   );
 };
