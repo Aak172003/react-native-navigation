@@ -51,6 +51,17 @@ const HomeScreen: FC = () => {
           }
         />
       </View>
+
+      {/* Advance Concepts */}
+      <View style={{ marginTop: 20 }}>
+        <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+          Advance Concepts
+        </Text>
+        <Button
+          title="Advance Concepts"
+          onPress={() => navigation.navigate("AdvanceConcepts")}
+        />
+      </View>
     </View>
   );
 };
