@@ -3,10 +3,12 @@ import React, { FC } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import AdvanceConceptDemo from "../AdvanceConceptCompoenent/AdvanceConceptDemo";
 import FlatListDemo from "../AdvanceConceptCompoenent/FlatListDemo";
+import SectionListDemo from "../AdvanceConceptCompoenent/SectionListDemo";
 
 export type AdvanceConceptsParamsList = {
   AdvanceConceptDemo: undefined;
   FlatListDemo: undefined;
+  SectionListDemo: undefined;
 };
 
 const Stack = createStackNavigator<AdvanceConceptsParamsList>();
@@ -16,6 +18,7 @@ const AdvanceConcepts: FC<AdvanceConceptsParamsList> = () => {
     <Stack.Navigator id={undefined}>
       <Stack.Screen name="AdvanceConceptDemo" component={AdvanceConceptDemo} />
       <Stack.Screen name="FlatListDemo" component={FlatListDemo} />
+      <Stack.Screen name="SectionListDemo" component={SectionListDemo} />
     </Stack.Navigator>
   );
 };

@@ -3,20 +3,9 @@ import React, { FC } from "react";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { AdvanceConceptsParamsList } from "../screens/AdvanceConcepts";
 import { useNavigation } from "@react-navigation/native";
-// import { useNavigation } from "@react-navigation/native";
+import { topics } from "../constants/advanceComponentTopics";
 
-const topics = [
-  {
-    id: 1,
-    title: "FlatListDemo",
-    route: "FlatListDemo",
-  },
-  {
-    id: 2,
-    title: "FlatListDemo",
-    route: "FlatListDemo",
-  },
-];
+// import { useNavigation } from "@react-navigation/native";
 
 // It contains params list and current page name
 type AdvanceConceptDemoProps = StackNavigationProp<
@@ -36,7 +25,7 @@ const AdvanceConceptDemo: FC<props> = ({ navigation }) => {
       <Text style={{ fontSize: 20, fontWeight: "bold" }}>
         AdvanceConceptDemo
       </Text>
-{/* 
+      {/* 
       <Button
         title="FlatListDemo"
         onPress={() => stackNavigation.navigate("FlatListDemo")}
@@ -53,7 +42,9 @@ const AdvanceConceptDemo: FC<props> = ({ navigation }) => {
               margin: 10,
               borderRadius: 10,
             }}
-            onPress={() => navigation.navigate(item.route as never)}
+            onPress={() =>
+              navigation.navigate(item.route as keyof AdvanceConceptsParamsList)
+            }
           >
             <Text>{item.title}</Text>
           </TouchableOpacity>
