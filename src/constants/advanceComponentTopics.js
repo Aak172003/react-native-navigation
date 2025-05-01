@@ -9,4 +9,9 @@ export const topics = [
         title: "Section List Demo",
         route: "SectionListDemo",
     },
+    {
+        id: 3,
+        title: "Touchable Screen",
+        route: "TouchableScreen",
+    },
 ];
