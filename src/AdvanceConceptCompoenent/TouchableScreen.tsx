@@ -12,8 +12,6 @@ import React, { FC } from "react";
 const TouchableScreen: FC = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>TouchableScreen</Text>
-
       <View style={{ flex: 1, gap: 10, justifyContent: "center" }}>
         <TouchableWithoutFeedback
           onPress={() => console.log("TouchableWithoutFeedback")}

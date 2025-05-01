@@ -14,4 +14,9 @@ export const topics = [
         title: "Touchable Screen",
         route: "TouchableScreen",
     },
+    {
+        id: 4,
+        title: "Modal Screen",
+        route: "ModalScreen",
+    },
 ];
