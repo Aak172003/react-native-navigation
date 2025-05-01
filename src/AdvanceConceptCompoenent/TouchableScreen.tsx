@@ -44,9 +44,7 @@ const TouchableScreen: FC = () => {
         <Pressable
           style={({ pressed }) => [
             styles.button,
-            {
-              backgroundColor: pressed ? "red" : "blue",
-            },
+            { backgroundColor: pressed ? "red" : "blue" },
           ]}
           //   this console log show when i pressed the component from in to out state
           onPress={() => console.log("Pressable")}
