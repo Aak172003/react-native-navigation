@@ -19,4 +19,9 @@ export const topics = [
         title: "Modal Screen",
         route: "ModalScreen",
     },
+    {
+        id: 5,
+        title: "Pull To Refresh Demo",
+        route: "PullToRefreshDemo",
+    },
 ];
