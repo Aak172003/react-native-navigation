@@ -24,4 +24,9 @@ export const topics = [
         title: "Pull To Refresh Demo",
         route: "PullToRefreshDemo",
     },
+    {
+        id: 6,
+        title: "Data Fetching Demo",
+        route: "DataFetchingDemo",
+    }
 ];

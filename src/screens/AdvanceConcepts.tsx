@@ -7,6 +7,7 @@ import SectionListDemo from "../AdvanceConceptCompoenent/SectionListDemo";
 import TouchableScreen from "../AdvanceConceptCompoenent/TouchableScreen";
 import ModalScreen from "../AdvanceConceptCompoenent/ModalScreen";
 import PullToRefreshDemo from "../AdvanceConceptCompoenent/PullToRefreshDemo";
+import DataFetchingDemo from "../AdvanceConceptCompoenent/DataFetchingDemo";
 
 export type AdvanceConceptsParamsList = {
   AdvanceConceptDemo: undefined;
@@ -15,6 +16,8 @@ export type AdvanceConceptsParamsList = {
   TouchableScreen: undefined;
   ModalScreen: undefined;
   PullToRefreshDemo: undefined;
+  DataFetchingDemo: undefined;
+  AxiosDemo: undefined;
 };
 
 const Stack = createStackNavigator<AdvanceConceptsParamsList>();
@@ -28,6 +31,7 @@ const AdvanceConcepts: FC<AdvanceConceptsParamsList> = () => {
       <Stack.Screen name="TouchableScreen" component={TouchableScreen} />
       <Stack.Screen name="ModalScreen" component={ModalScreen} />
       <Stack.Screen name="PullToRefreshDemo" component={PullToRefreshDemo} />
+      <Stack.Screen name="DataFetchingDemo" component={DataFetchingDemo} />
     </Stack.Navigator>
   );
 };
