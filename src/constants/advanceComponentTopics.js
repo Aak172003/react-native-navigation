@@ -28,5 +28,10 @@ export const topics = [
         id: 6,
         title: "Data Fetching Demo",
         route: "DataFetchingDemo",
+    },
+    {
+        id: 7,
+        title: "Axios Demo",
+        route: "AxiosDemo",
     }
 ];

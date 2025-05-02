@@ -8,6 +8,7 @@ import TouchableScreen from "../AdvanceConceptCompoenent/TouchableScreen";
 import ModalScreen from "../AdvanceConceptCompoenent/ModalScreen";
 import PullToRefreshDemo from "../AdvanceConceptCompoenent/PullToRefreshDemo";
 import DataFetchingDemo from "../AdvanceConceptCompoenent/DataFetchingDemo";
+import AxiosDemo from "../AdvanceConceptCompoenent/AxiosDemo";
 
 export type AdvanceConceptsParamsList = {
   AdvanceConceptDemo: undefined;
@@ -32,6 +33,7 @@ const AdvanceConcepts: FC<AdvanceConceptsParamsList> = () => {
       <Stack.Screen name="ModalScreen" component={ModalScreen} />
       <Stack.Screen name="PullToRefreshDemo" component={PullToRefreshDemo} />
       <Stack.Screen name="DataFetchingDemo" component={DataFetchingDemo} />
+      <Stack.Screen name="AxiosDemo" component={AxiosDemo} />
     </Stack.Navigator>
   );
 };
