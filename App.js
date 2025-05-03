@@ -27,11 +27,11 @@ export default function App() {
     if (granted === PermissionsAndroid.RESULTS.GRANTED) {
 
       console.log("if :::::::::::::: ", granted)
-      // Alert.alert('Permission granted');
+      Alert.alert('Permission granted');
       getToken();
     } else {
       console.log("else :::::::::::::: ", granted)
-      // Alert.alert('Permission denied');
+      Alert.alert('Permission denied');
     }
   };
 
