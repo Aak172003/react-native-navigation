@@ -5,7 +5,7 @@ import { Alert, StyleSheet, Text, View } from 'react-native';
 import RootNavigator from './src/RootNavigator';
 import { PermissionsAndroid } from 'react-native';
 import messaging from '@react-native-firebase/messaging';
-
+import notifee from '@notifee/react-native';
 
 export default function App() {
 
@@ -37,14 +37,55 @@ export default function App() {
 
 
   useEffect(() => {
+
+    console.log("1111111111111111111111111111111111111")
     const unsubscribe = messaging().onMessage(async remoteMessage => {
+      console.log("2222222222222222222222222222222222222")
       console.log("remoteMessage :::::::::::::: ", remoteMessage)
-      Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+      // Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+
+      onDisplayNotification(remoteMessage);
     });
 
     return unsubscribe;
   }, []);
 
+
+
+  // Display a notification when the app is opened from the notification bar 
+
+  const onDisplayNotification = async (remoteMessage) => {
+
+
+    // this is remote message data
+    console.log("remoteMessage :::::::::::::: ", remoteMessage)
+
+    // Request permissions (required for iOS)
+    await notifee.requestPermission()
+
+    // Create a channel (required for Android)
+    const channelId = await notifee.createChannel({
+      id: 'default',
+      name: 'Default Channel',
+    });
+
+
+    console.log("3333333333333333333333333333333333333", remoteMessage.notification)
+
+    // Display a notification
+    await notifee.displayNotification({
+      title: remoteMessage.notification.title,
+      body: remoteMessage.notification.body,
+      android: {
+        channelId,
+        smallIcon: 'name-of-a-small-icon', // optional, defaults to 'ic_launcher'.
+        // pressAction is needed if you want the notification to open the app when pressed
+        pressAction: {
+          id: 'default',
+        },
+      },
+    });
+  }
 
   const getToken = async () => {
     const token = await messaging().getToken();
