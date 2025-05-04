@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "299422465894",
+    "project_id": "notificationdemoapp-3cc03",
+    "storage_bucket": "notificationdemoapp-3cc03.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:299422465894:android:e9ea5ce962109dcc5592a7",
+        "android_client_info": {
+          "package_name": "com.reactnavigation"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxQBJdNN3fLtceH8IKJ4R2lEGte2olMWU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
