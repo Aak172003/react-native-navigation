@@ -24,10 +24,13 @@ const NotificationBox = ({ notifications, onNotificationPress }) => {
         <Animated.View style={[styles.container, { height: boxHeight }]}>
             <TouchableOpacity style={styles.header} onPress={toggleExpand}>
                 <View style={styles.headerContent}>
-                    <Icon name="notifications" size={24} color="white" />
-                    <Text style={styles.headerText}>Notifications</Text>
-                    <View style={styles.badgeContainer}>
-                        <Text style={styles.badgeText}>{notifications.length}</Text>
+                    <View style={styles.iconContainer}>
+                        <Icon name="notifications" size={24} color="white" />
+                        {notifications.length > 0 && (
+                            <View style={styles.badgeContainer}>
+                                <Text style={styles.badgeText}>{notifications.length}</Text>
+                            </View>
+                        )}
                     </View>
                 </View>
             </TouchableOpacity>
@@ -58,20 +61,9 @@ const NotificationBox = ({ notifications, onNotificationPress }) => {
 const styles = StyleSheet.create({
     container: {
         position: 'absolute',
-        top: 50,
-        right: 20,
-        width: 300,
-        backgroundColor: 'white',
+        top: 0,
+        right: 0,
         borderRadius: 10,
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
-        overflow: 'hidden',
     },
     header: {
         padding: 15,
@@ -83,25 +75,24 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
     },
-    headerText: {
-        color: 'white',
-        fontSize: 16,
-        fontWeight: 'bold',
-        marginLeft: 8,
+    iconContainer: {
+        position: 'relative',
     },
     badgeContainer: {
+        position: 'absolute',
+        top: -8,
+        right: -12,
         backgroundColor: '#FF5252',
         borderRadius: 12,
-        minWidth: 24,
-        height: 24,
+        minWidth: 20,
+        height: 20,
         justifyContent: 'center',
         alignItems: 'center',
-        marginLeft: 'auto',
-        paddingHorizontal: 6,
+        paddingHorizontal: 4,
     },
     badgeText: {
         color: 'white',
-        fontSize: 12,
+        fontSize: 10,
         fontWeight: 'bold',
     },
     list: {
