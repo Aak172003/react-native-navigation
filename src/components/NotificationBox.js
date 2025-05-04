@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, Animated } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, Animated, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const NotificationBox = ({ notifications, onNotificationPress }) => {
     const [isExpanded, setIsExpanded] = useState(false);
     const [animation] = useState(new Animated.Value(0));
+    const screenWidth = Dimensions.get('window').width;
 
     const toggleExpand = () => {
         setIsExpanded(!isExpanded);
@@ -20,12 +21,17 @@ const NotificationBox = ({ notifications, onNotificationPress }) => {
         outputRange: [60, 300],
     });
 
+    const boxWidth = animation.interpolate({
+        inputRange: [0, 1],
+        outputRange: [60, screenWidth],
+    });
+
     return (
-        <Animated.View style={[styles.container, { height: boxHeight }]}>
+        <Animated.View style={[styles.container, { height: boxHeight, width: boxWidth }]}>
             <TouchableOpacity style={styles.header} onPress={toggleExpand}>
                 <View style={styles.headerContent}>
                     <View style={styles.iconContainer}>
-                        <Icon name="notifications" size={24} color="white" />
+                        <Icon name="notifications" size={34} color="blue" />
                         {notifications.length > 0 && (
                             <View style={styles.badgeContainer}>
                                 <Text style={styles.badgeText}>{notifications.length}</Text>
@@ -61,15 +67,12 @@ const NotificationBox = ({ notifications, onNotificationPress }) => {
 const styles = StyleSheet.create({
     container: {
         position: 'absolute',
-        top: 0,
-        right: 0,
+        top: 10,
+        right: 10,
         borderRadius: 10,
     },
     header: {
         padding: 15,
-        backgroundColor: '#2196F3',
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
     },
     headerContent: {
         flexDirection: 'row',
@@ -100,8 +103,6 @@ const styles = StyleSheet.create({
     },
     notificationItem: {
         padding: 15,
-        borderBottomWidth: 1,
-        borderBottomColor: '#eee',
     },
     notificationTitle: {
         fontSize: 14,
