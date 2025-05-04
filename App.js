@@ -14,6 +14,27 @@ export default function App() {
     requestPermissionsAndroid();
   }, []);
 
+  useEffect(() => {
+    // Handle background messages
+    messaging().setBackgroundMessageHandler(async remoteMessage => {
+      console.log('Message handled in the background!', remoteMessage);
+    });
+
+    // Handle notification opened app from background state
+    messaging().onNotificationOpenedApp(remoteMessage => {
+      console.log('Notification caused app to open from background state:', remoteMessage);
+    });
+
+    // Check if app was opened from a notification when app was closed/quit
+    messaging()
+      .getInitialNotification()
+      .then(remoteMessage => {
+        if (remoteMessage) {
+          console.log('Notification caused app to open from quit state:', remoteMessage);
+        }
+      });
+  }, []);
+
 
   const requestPermissionsAndroid = async () => {
     const granted = await PermissionsAndroid.request(
@@ -37,7 +58,7 @@ export default function App() {
 
 
   useEffect(() => {
-
+    // Handle foreground messages
     console.log("1111111111111111111111111111111111111")
     const unsubscribe = messaging().onMessage(async remoteMessage => {
       console.log("2222222222222222222222222222222222222")
@@ -78,8 +99,7 @@ export default function App() {
       body: remoteMessage.notification.body,
       android: {
         channelId,
-        smallIcon: 'name-of-a-small-icon', // optional, defaults to 'ic_launcher'.
-        // pressAction is needed if you want the notification to open the app when pressed
+        smallIcon: 'ic_launcher', // important fix
         pressAction: {
           id: 'default',
         },
