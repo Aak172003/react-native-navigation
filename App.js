@@ -41,17 +41,11 @@ export default function App() {
       PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS,
     );
 
-
-    console.log("PermissionsAndroid.RESULTS.granted :::::::::::::: ", PermissionsAndroid.RESULTS.granted)
-
-
     if (granted === PermissionsAndroid.RESULTS.GRANTED) {
 
-      console.log("if :::::::::::::: ", granted)
       Alert.alert('Permission granted');
       getToken();
     } else {
-      console.log("else :::::::::::::: ", granted)
       Alert.alert('Permission denied');
     }
   };
@@ -59,29 +53,19 @@ export default function App() {
 
   useEffect(() => {
     // Handle foreground messages
-    console.log("1111111111111111111111111111111111111")
     const unsubscribe = messaging().onMessage(async remoteMessage => {
-      console.log("2222222222222222222222222222222222222")
-      console.log("remoteMessage :::::::::::::: ", remoteMessage)
       // Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
-
       onDisplayNotification(remoteMessage);
     });
 
     return unsubscribe;
   }, []);
 
-
-
   // Display a notification when the app is opened from the notification bar 
 
   const onDisplayNotification = async (remoteMessage) => {
-
-
     // this is remote message data
-    console.log("remoteMessage :::::::::::::: ", remoteMessage)
 
-    // Request permissions (required for iOS)
     await notifee.requestPermission()
 
     // Create a channel (required for Android)
@@ -91,15 +75,13 @@ export default function App() {
     });
 
 
-    console.log("3333333333333333333333333333333333333", remoteMessage.notification)
-
     // Display a notification
     await notifee.displayNotification({
       title: remoteMessage.notification.title,
       body: remoteMessage.notification.body,
       android: {
         channelId,
-        smallIcon: 'ic_launcher', // important fix
+        smallIcon: 'ic_launcher',
         pressAction: {
           id: 'default',
         },
