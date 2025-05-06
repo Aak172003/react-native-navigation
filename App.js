@@ -1,12 +1,10 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import { Alert, StyleSheet, View } from 'react-native';
 import RootNavigator from './src/RootNavigator';
 import { PermissionsAndroid } from 'react-native';
 import messaging from '@react-native-firebase/messaging';
 import notifee from '@notifee/react-native';
-import NotificationBox from './src/components/NotificationBox';
 
 export default function App() {
   const [notifications, setNotifications] = useState([]);
@@ -27,10 +25,7 @@ export default function App() {
     setNotifications(prev => [newNotification, ...prev]);
   };
 
-  const handleNotificationPress = (notification) => {
-    // Handle notification press action here
-    console.log('Notification pressed:', notification);
-  };
+
 
   const requestPermissionsAndroid = async () => {
     const granted = await PermissionsAndroid.request(
@@ -100,10 +95,6 @@ export default function App() {
     <NavigationContainer>
       <View style={styles.container}>
         <RootNavigator />
-        <NotificationBox
-          notifications={notifications}
-          onNotificationPress={handleNotificationPress}
-        />
       </View>
     </NavigationContainer>
   );
