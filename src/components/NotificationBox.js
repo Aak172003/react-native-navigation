@@ -34,6 +34,7 @@ const NotificationBox = ({ notifications, onNotificationPress }) => {
                         <Icon name="notifications" size={34} color="blue" />
                         {notifications.length > 0 && (
                             <View style={styles.badgeContainer}>
+                                {console.log("notifications ::::::::::: ", notifications)}
                                 <Text style={styles.badgeText}>{notifications.length}</Text>
                             </View>
                         )}

@@ -48,6 +48,7 @@ export default function App() {
   useEffect(() => {
     // Handle foreground messages
     const unsubscribe = messaging().onMessage(async remoteMessage => {
+      console.log("remoteMessage", remoteMessage);
       addNotification(remoteMessage);
       onDisplayNotification(remoteMessage);
     });
@@ -68,7 +69,6 @@ export default function App() {
       addNotification(remoteMessage);
     });
 
-    // Check if app was opened from a notification when app was closed/quit
     messaging()
       .getInitialNotification()
       .then(remoteMessage => {
@@ -80,26 +80,17 @@ export default function App() {
   }, []);
 
   const onDisplayNotification = async (remoteMessage) => {
-    await notifee.requestPermission();
-
-    const channelId = await notifee.createChannel({
-      id: 'default',
-      name: 'Default Channel',
-    });
+    const permission = await notifee.requestPermission();
+    console.log("permission", permission);
 
     await notifee.displayNotification({
       title: remoteMessage.notification?.title || 'New Message',
       body: remoteMessage.notification?.body || 'You have a new message',
-      android: {
-        channelId,
-        smallIcon: 'ic_launcher',
-        pressAction: {
-          id: 'default',
-        },
-      },
+
     });
   };
 
+  // With this function, we can get the token of the device
   const getToken = async () => {
     const token = await messaging().getToken();
     console.log("FCM Token:", token);

@@ -1,10 +1,11 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React, { FC } from "react";
-import HomeScreen from "./screens/HomeScreen";
+import HomeScreen, { Notification } from "./screens/HomeScreen";
 import StackNavigaionDemo from "./components/stack/StackNavigaionDemo";
 import TabNavigationDemo from "./components/bottomTab/TabNavigationDemo";
 import DrawerNavigationDemo from "./components/drawer/DrawerNavigationDemo";
 import AdvanceConcepts from "./screens/AdvanceConcepts";
+import NotificationDemo from "./screens/NotificationDemo";
 
 export type RootStackParamList = {
   Home: {
@@ -16,6 +17,9 @@ export type RootStackParamList = {
     drawerId: string;
   };
   AdvanceConcepts: undefined;
+  NotificationDemo: {
+    notifications: Notification[];
+  };
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -39,6 +43,28 @@ const RootNavigator: FC = () => {
       <Stack.Screen name="TabDemo" component={TabNavigationDemo} />
       <Stack.Screen name="DrawerDemo" component={DrawerNavigationDemo} />
       <Stack.Screen name="AdvanceConcepts" component={AdvanceConcepts} />
+      <Stack.Screen
+        name="NotificationDemo"
+        options={{
+          title: "Notification Demo",
+          headerShown: true,
+          headerTitle: "Notification Demo",
+          headerStyle: {
+            backgroundColor: "#f5f5f5",
+          },
+          headerTitleStyle: {
+            color: "#000",
+            textAlign: "center",
+            alignSelf: "center",
+          },
+          headerTitleAlign: "center",
+          headerBackTitle: "Back",
+          headerBackTitleStyle: {
+            color: "#000",
+          },
+        }}
+        component={NotificationDemo}
+      />
     </Stack.Navigator>
   );
 };
