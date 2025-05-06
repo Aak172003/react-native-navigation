@@ -13,13 +13,17 @@ import { Notification } from "./HomeScreen";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { RootStackParamList } from "../RootNavigator";
 
-type NotificationDemoRouteProp = RouteProp<RootStackParamList, "NotificationDemo">;
+type NotificationDemoRouteProp = RouteProp<
+  RootStackParamList,
+  "NotificationDemo"
+>;
 
 const NotificationDemo: FC = () => {
   const route = useRoute<NotificationDemoRouteProp>();
-  const [notificationList, setNotificationList] = useState<Notification[]>(route.params.notifications || []);
-  
-  // Request permission for notifications
+  const [notificationList, setNotificationList] = useState<Notification[]>(
+    route.params.notifications || []
+  );
+
   const requestUserPermission = async () => {
     const authStatus = await messaging().requestPermission();
     const enabled =
@@ -27,7 +31,6 @@ const NotificationDemo: FC = () => {
       authStatus === messaging.AuthorizationStatus.PROVISIONAL;
 
     if (enabled) {
-      console.log("Authorization status:", authStatus);
       getFCMToken();
     } else {
       Alert.alert(
@@ -37,12 +40,9 @@ const NotificationDemo: FC = () => {
     }
   };
 
-  // Get FCM token for this device
   const getFCMToken = async () => {
     try {
-      const token = await messaging().getToken();
-      console.log("FCM Token:", token);
-      // You should send this token to your server to target this device
+      await messaging().getToken();
     } catch (error) {
       console.error("Failed to get FCM token:", error);
     }
@@ -60,12 +60,15 @@ const NotificationDemo: FC = () => {
     setNotificationList((prev) => [newNotification, ...prev]);
   };
 
+  const onNotificationPress = (notification: Notification) => {
+    console.log("Notification pressed:", notification);
+    
+  };
+
   useEffect(() => {
-    // Request permission when component mounts
     requestUserPermission();
 
     const unsubscribe = messaging().onMessage(async (remoteMessage) => {
-      console.log("Foreground message received:", remoteMessage);
       addNotification(remoteMessage);
     });
 
@@ -73,18 +76,11 @@ const NotificationDemo: FC = () => {
   }, []);
 
   useEffect(() => {
-    // Handle background messages
     messaging().setBackgroundMessageHandler(async (remoteMessage) => {
-      console.log("Message handled in the background!", remoteMessage);
       addNotification(remoteMessage);
     });
 
-    // Handle notification opened app from background state
     messaging().onNotificationOpenedApp((remoteMessage) => {
-      console.log(
-        "Notification caused app to open from background state:",
-        remoteMessage
-      );
       addNotification(remoteMessage);
     });
 
@@ -92,10 +88,6 @@ const NotificationDemo: FC = () => {
       .getInitialNotification()
       .then((remoteMessage) => {
         if (remoteMessage) {
-          console.log(
-            "Notification caused app to open from quit state:",
-            remoteMessage
-          );
           addNotification(remoteMessage);
         }
       });
@@ -114,8 +106,8 @@ const NotificationDemo: FC = () => {
             keyExtractor={(item, index) => index.toString()}
             renderItem={({ item }) => (
               <TouchableOpacity
+                onPress={() => onNotificationPress(item)}
                 style={styles.notificationItem}
-                // onPress={() => onNotificationPress(item)}
               >
                 <Text style={styles.notificationTitle}>{item.title}</Text>
                 <Text style={styles.notificationBody}>{item.body}</Text>
