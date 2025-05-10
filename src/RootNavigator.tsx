@@ -7,6 +7,7 @@ import DrawerNavigationDemo from "./components/drawer/DrawerNavigationDemo";
 import AdvanceConcepts from "./screens/AdvanceConcepts";
 import NotificationDemo from "./screens/NotificationDemo";
 import SingleNotification from "./screens/SingleNotification";
+import AnimationsConcepts from "./screens/AnimationsConcepts";
 
 export type RootStackParamList = {
   Home: {
@@ -24,6 +25,7 @@ export type RootStackParamList = {
   SingleNotification: {
     notification: Notification;
   };
+  AnimationsConcepts: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -80,6 +82,7 @@ const RootNavigator: FC = () => {
           },
         }}
       />
+      <Stack.Screen name="AnimationsConcepts" component={AnimationsConcepts} />
     </Stack.Navigator>
   );
 };

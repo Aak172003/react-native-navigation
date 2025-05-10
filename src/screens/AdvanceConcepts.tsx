@@ -1,4 +1,3 @@
-import { View, Text } from "react-native";
 import React, { FC } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import AdvanceConceptDemo from "../AdvanceConceptCompoenent/AdvanceConceptDemo";
@@ -21,7 +20,6 @@ export type AdvanceConceptsParamsList = {
   DataFetchingDemo: undefined;
   AxiosDemo: undefined;
   ThemeScreenDemo: undefined;
-  
 };
 
 const Stack = createStackNavigator<AdvanceConceptsParamsList>();

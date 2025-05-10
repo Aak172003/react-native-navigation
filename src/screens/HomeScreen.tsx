@@ -148,7 +148,7 @@ const HomeScreen: FC = () => {
         />
       </View>
 
-      {/* Notification Icon with Badge */}
+      {/* Notification Icon with Badge  which is at top right corner of the screen */}
       <TouchableOpacity
         onPress={() =>
           navigation.navigate("NotificationDemo", {
@@ -166,6 +166,17 @@ const HomeScreen: FC = () => {
           )}
         </View>
       </TouchableOpacity>
+
+      {/* Animation Concepts */}
+      <View style={{ marginTop: 20 }}>
+        <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+          Animation Concepts
+        </Text>
+        <Button
+          title="Animation Concepts"
+          onPress={() => navigation.navigate("AnimationsConcepts")}
+        />
+      </View>
     </View>
   );
 };

@@ -1,0 +1,14 @@
+Steps How implement animation in react native
+    1. Wrap that View with Animated.View
+    2. Create a new Animated.Value using useRef because as docs suggest that useRef is best practice for this
+    3. Use that Animated.Value in style prop of Animated.View
+
+
+
+What I pass to Animated.timing function:
+    1. The Animated.Value that we want to animate
+    2. An object with configuration options:
+       - toValue: the final value we want to animate to
+       - duration: how long the animation should take (in milliseconds)
+       - easing: (optional) 
+       - useNativeDriver: set to true for better performance when animating only supported properties
