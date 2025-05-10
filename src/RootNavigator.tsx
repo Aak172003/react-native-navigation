@@ -6,6 +6,7 @@ import TabNavigationDemo from "./components/bottomTab/TabNavigationDemo";
 import DrawerNavigationDemo from "./components/drawer/DrawerNavigationDemo";
 import AdvanceConcepts from "./screens/AdvanceConcepts";
 import NotificationDemo from "./screens/NotificationDemo";
+import SingleNotification from "./screens/SingleNotification";
 
 export type RootStackParamList = {
   Home: {
@@ -19,6 +20,9 @@ export type RootStackParamList = {
   AdvanceConcepts: undefined;
   NotificationDemo: {
     notifications: Notification[];
+  };
+  SingleNotification: {
+    notification: Notification;
   };
 };
 
@@ -64,6 +68,17 @@ const RootNavigator: FC = () => {
           },
         }}
         component={NotificationDemo}
+      />
+      <Stack.Screen
+        name="SingleNotification"
+        component={SingleNotification}
+        options={{
+          headerShown: true,
+          headerTitle: "Single Notification",
+          headerStyle: {
+            backgroundColor: "#f5f5f5",
+          },
+        }}
       />
     </Stack.Navigator>
   );

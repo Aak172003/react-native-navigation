@@ -10,16 +10,22 @@ import {
 import React, { FC, useEffect, useState } from "react";
 import messaging from "@react-native-firebase/messaging";
 import { Notification } from "./HomeScreen";
-import { RouteProp, useRoute } from "@react-navigation/native";
+import { RouteProp, useRoute, useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../RootNavigator";
 
 type NotificationDemoRouteProp = RouteProp<
   RootStackParamList,
   "NotificationDemo"
 >;
+type NotificationDemoNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  "NotificationDemo"
+>;
 
 const NotificationDemo: FC = () => {
   const route = useRoute<NotificationDemoRouteProp>();
+  const navigation = useNavigation<NotificationDemoNavigationProp>();
   const [notificationList, setNotificationList] = useState<Notification[]>(
     route.params.notifications || []
   );
@@ -62,8 +68,8 @@ const NotificationDemo: FC = () => {
 
   const onNotificationPress = (notification: Notification) => {
     console.log("Notification pressed:", notification);
-    // Log the specific notification details
-    console.log("Notification details:", notification.data);
+    // Navigate to SingleNotification screen with the notification data
+    navigation.navigate("SingleNotification", { notification });
   };
 
   useEffect(() => {
