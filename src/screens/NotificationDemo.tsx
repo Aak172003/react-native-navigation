@@ -62,7 +62,8 @@ const NotificationDemo: FC = () => {
 
   const onNotificationPress = (notification: Notification) => {
     console.log("Notification pressed:", notification);
-    
+    // Log the specific notification details
+    console.log("Notification details:", notification.data);
   };
 
   useEffect(() => {
