@@ -33,5 +33,10 @@ export const topics = [
         id: 7,
         title: "Axios Demo",
         route: "AxiosDemo",
-    }
+    },
+    {
+        id: 8,
+        title: "Theme Screen Demo",
+        route: "ThemeScreenDemo",
+    },
 ];

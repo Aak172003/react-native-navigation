@@ -24,14 +24,12 @@ const api = axios.create({
 });
 
 // request interceptor
-
 api.interceptors.request.use((config) => {
   console.log("request sent to the server ", config);
   return config;
 });
 
 // response interceptor
-
 api.interceptors.response.use(
   (response) => {
     console.log("response from the server ", response);

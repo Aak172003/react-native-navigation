@@ -5,6 +5,7 @@ import RootNavigator from './src/RootNavigator';
 import { PermissionsAndroid } from 'react-native';
 import messaging from '@react-native-firebase/messaging';
 import notifee from '@notifee/react-native';
+import { ThemeProvider } from './src/context/ThemeContext';
 
 export default function App() {
   const [notifications, setNotifications] = useState([]);
@@ -92,11 +93,13 @@ export default function App() {
   };
 
   return (
-    <NavigationContainer>
-      <View style={styles.container}>
-        <RootNavigator />
-      </View>
-    </NavigationContainer>
+    <ThemeProvider>
+      <NavigationContainer>
+        <View style={styles.container}>
+          <RootNavigator />
+        </View>
+      </NavigationContainer>
+    </ThemeProvider>
   );
 }
 
