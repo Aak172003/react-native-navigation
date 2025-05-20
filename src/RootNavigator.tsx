@@ -30,6 +30,7 @@ export type RootStackParamList = {
 
 const Stack = createStackNavigator<RootStackParamList>();
 const RootNavigator: FC = () => {
+  console.log("Root Navigator Page");
   return (
     <Stack.Navigator
       id={undefined}
